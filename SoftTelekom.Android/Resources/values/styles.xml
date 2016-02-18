@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<style name="TextViewStyle" parent="android:Widget.TextView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginBottom">@dimen/defaultPadding</item>
+		<item name="android:textSize">@dimen/normal_font</item>
+	</style>
+  <style name="MainLayoutBackground_Dashboard">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:orientation">vertical</item>
+    <item name="android:paddingTop">@dimen/defaultPadding_2x</item>
+    <item name="android:paddingLeft">@dimen/defaultPadding_2x</item>
+    <item name="android:paddingRight">@dimen/defaultPadding_2x</item>
+  </style>
+
+  <style name="EditTextStyle_standard" parent="android:Widget.EditText">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:padding">@dimen/defaultPadding_2x</item>
+    <item name="android:background">@drawable/edittext_standard</item>
+    <!--<item name="android:layout_marginBottom">@dimen/defaultPadding_2x</item>-->
+    <item name="android:singleLine">true</item>
+    <item name="android:textSize">@dimen/normal_font</item>
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:textColorHint">@color/lightgray</item>
+  </style>
+
+  <style name="EditTextStyle_standard_multiline" parent="android:Widget.EditText">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:padding">@dimen/defaultPadding_2x</item>
+    <item name="android:background">@drawable/edittext_standard</item>
+    <!--<item name="android:layout_marginBottom">@dimen/defaultPadding_2x</item>-->
+    <item name="android:textSize">@dimen/normal_font</item>
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:textColorHint">@color/lightgray</item>
+  </style>
+
+  <style name="ButtonStyle_standard" parent="android:Widget.Button">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:background">@drawable/button_selector</item>
+    <!--<item name="android:background">@android:color/transparent</item>-->
+    <item name="android:padding">@dimen/defaultPadding_2x</item>
+    <!--<item name="android:textColor">@color/login_button_text_white</item>-->
+    <item name="android:textSize">@dimen/normal_font</item>
+    <!--<item name="android:drawablePadding">@dimen/defaultPadding</item>-->
+  </style>
+
+  <style name="TextViewStyle_standard_black_18" parent="android:Widget.TextView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingBottom">@dimen/defaultPadding_2x</item>
+    <item name="android:paddingTop">@dimen/defaultPadding_2x</item>
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:textSize">@dimen/normal_font</item>
+  </style>
+
+  <style name="TextViewStyle_title_white_22" parent="android:Widget.TextView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingBottom">@dimen/defaultPadding_2x</item>
+    <item name="android:paddingTop">@dimen/defaultPadding_2x</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textSize">@dimen/large_font</item>
+  </style>
+
+  <style name="TextViewStyle_title_black_22" parent="android:Widget.TextView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingBottom">@dimen/defaultPadding_2x</item>
+    <item name="android:paddingTop">@dimen/defaultPadding_2x</item>
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:textSize">@dimen/large_font</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextViewStyle_title_black_24" parent="android:Widget.TextView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:textSize">@dimen/llarge_font</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextViewStyle_contact" parent="android:Widget.TextView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingBottom">@dimen/defaultPadding_2x</item>
+    <item name="android:paddingTop">@dimen/defaultPadding_2x</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">@dimen/normal_font</item>
+  </style>
+</resources>

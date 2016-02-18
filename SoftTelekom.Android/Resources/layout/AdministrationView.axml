@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        extra:MvxBind="BackgroundColor NativeColor(TopBarColor)"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewStyle_title_white_22"
+            extra:MvxLang="Text Administration, Source=SharedTextSource"
+            android:id="@+id/textView1" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/defaultPadding_2x"
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_title_black_22"
+                android:textColor="@android:color/black"
+                extra:MvxLang="Text PhoneAdministTitle, Source=SharedTextSource"
+                android:id="@+id/textView1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_standard_black_18"
+                android:textColor="@android:color/black"
+                extra:MvxLang="Text PhoneDescription, Source=SharedTextSource"
+                android:id="@+id/textView2" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_title_black_22"
+                android:textColor="@android:color/black"
+                extra:MvxLang="Text OnlineAdministTitle, Source=SharedTextSource"
+                android:id="@+id/textView3" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_standard_black_18"
+                android:textColor="@android:color/black"
+                extra:MvxBind="Text OnlineDescription"
+                android:id="@+id/textView4" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_standard_black_18"
+                android:textColor="@android:color/black"
+                extra:MvxBind="Text NameLabel"
+                android:id="@+id/textView5" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle_standard"
+                android:inputType="textEmailAddress"
+                extra:MvxBind="Text UserName;" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_standard_black_18"
+                android:textColor="@android:color/black"
+                android:paddingTop="0dp"
+                extra:MvxBind="Text NameLabel"
+                android:id="@+id/textView6" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle_standard"
+                android:inputType="textPassword"
+                extra:MvxBind="Text UserPwd;" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding_2x"
+                extra:MvxBind="BackgroundColor NativeColor(MenuBarColor)">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    extra:MvxBind="Text LogInOutButtonTitle; Click LogInCommand"
+                    style="@style/ButtonStyle_standard"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/button_send" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

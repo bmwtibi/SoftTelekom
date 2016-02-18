@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/defaultPadding_2x"
+    extra:MvxBind="BackgroundColor NativeColor(ListBackgroundColor)"
+    android:weightSum="2">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/TextViewStyle_standard_black_18"
+        extra:MvxBind="Text Date"
+        android:id="@+id/textView1" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/TextViewStyle_standard_black_18"
+        android:gravity="right"
+        extra:MvxBind="Text DataUsage"
+        android:id="@+id/textView_paid" />
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        extra:MvxBind="BackgroundColor NativeColor(TopBarColor)"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewStyle_title_white_22"
+            extra:MvxLang="Text BugReport, Source=SharedTextSource"
+            android:id="@+id/textView1" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/defaultPadding_2x">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_standard_black_18"
+                android:textColor="@android:color/black"
+                android:paddingTop="0dp"
+                extra:MvxLang="Text ReportSpinnerTitle, Source=SharedTextSource" />
+            <MvxSpinner
+                android:id="@+id/addTrans_mainCategoryList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:layout_gravity="center_vertical"
+                extra:MvxBind="ItemsSource ReasonList; SelectedItem SelectedReason; BackgroundColor NativeColor(PickerColor)"
+                extra:MvxItemTemplate="@layout/enum_item_tamplet"
+                extra:MvxDropDownItemTemplate="@layout/enum_dropdownitemtemplate" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle_standard_multiline"
+                android:inputType="textMultiLine"
+                android:gravity="top|left"
+                android:lines="8"
+                android:paddingBottom="@dimen/defaultPadding_2x"
+                android:layout_marginTop="@dimen/defaultPadding_2x"
+                extra:MvxBind="Text DescText;" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding_2x"
+                extra:MvxBind="BackgroundColor NativeColor(MenuBarColor)">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    extra:MvxLang="Text SendOrder, Source=SharedTextSource"
+                    extra:MvxBind="Click SendCommand"
+                    style="@style/ButtonStyle_standard"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/button_send" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

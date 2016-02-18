@@ -1,0 +1,89 @@
+﻿<views:MvxPhonePage
+    x:Class="SoftTelekom.WindowsPhone.UserControls.OrderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <TextBlock Foreground="Black" Text="{Binding SharedTextSource,Converter={StaticResource Language},ConverterParameter=NameRequired, FallbackValue=NameRequired,Mode=OneTime}" Margin="10 10 10 0" FontSize="25"  />
+                <TextBox BorderBrush="Black" BorderThickness="1" Text="{Binding Order.NameText, Mode=TwoWay}"/>
+
+                <TextBlock Foreground="Black" Text="{Binding SharedTextSource,Converter={StaticResource Language},ConverterParameter=EmailAddress, FallbackValue=EmailAddress,Mode=OneTime}" Margin="10 10 10 0" FontSize="25"  />
+                <TextBox BorderBrush="Black" BorderThickness="1" Text="{Binding Order.EmailText, Mode=TwoWay}"/>
+
+                <TextBlock Foreground="Black" Text="{Binding SharedTextSource,Converter={StaticResource Language},ConverterParameter=PhoneRequired, FallbackValue=PhoneRequired,Mode=OneTime}" Margin="10 10 10 0" FontSize="25"  />
+                <TextBox BorderBrush="Black" BorderThickness="1" Text="{Binding Order.PhoneNumberText, Mode=TwoWay}"/>
+
+                <Button Content="Mentés" Background="Purple" />
+
+                <TextBlock Foreground="Black" Text="Felhasználó" Margin="10 10 10 0" FontSize="25"  />
+                <toolkit:ListPicker 
+                    
+                BorderBrush="Black"
+                BorderThickness="1"
+                Name="CityListPicker"
+                SelectionChanged="CityListPicker_OnSelectionChanged"
+                ItemsSource="{Binding Order.CityItemList}"
+                SelectedIndex="{Binding Order.SelectedCityIndex, Mode=TwoWay}">
+                    <toolkit:ListPicker.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="Black" Text="{Binding Name, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </toolkit:ListPicker.ItemTemplate>
+                    <toolkit:ListPicker.FullModeItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                               
+                                <TextBlock FontSize="31"  Margin="10" VerticalAlignment="Center" Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:ListPicker.FullModeItemTemplate>
+                </toolkit:ListPicker>
+
+                <TextBlock Foreground="Black" Text="Felhasználó" Margin="10 10 10 0" FontSize="25"  />
+                <toolkit:ListPicker 
+                BorderBrush="Black"
+                BorderThickness="1"
+                Name="MbListPicker"
+                SelectionChanged="MbListPicker_OnSelectionChanged"
+                ItemsSource="{Binding Order.SpeedItemList}"
+                SelectedIndex="{Binding Order.SelectedSpeedIndex, Mode=TwoWay}">
+                    <toolkit:ListPicker.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="Black" Text="{Binding Name}" />
+                        </DataTemplate>
+                    </toolkit:ListPicker.ItemTemplate>
+                    <toolkit:ListPicker.FullModeItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock FontSize="31"  Margin="10" VerticalAlignment="Center" Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:ListPicker.FullModeItemTemplate>
+                </toolkit:ListPicker>
+                <Button Content="{Binding SharedTextSource,Converter={StaticResource Language},ConverterParameter=SendOrder, FallbackValue=SendOrder,Mode=OneTime}" Background="{Binding TopBarColor, Converter={StaticResource NativeColorConverter}, Mode=TwoWay}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+</views:MvxPhonePage>

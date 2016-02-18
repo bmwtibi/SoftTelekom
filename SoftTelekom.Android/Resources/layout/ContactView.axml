@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        extra:MvxBind="BackgroundColor NativeColor(TopBarColor)"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewStyle_title_white_22"
+            extra:MvxLang="Text Contact, Source=SharedTextSource"
+            android:id="@+id/textView1" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="@dimen/defaultPadding_2x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                extra:MvxBind="Text AddressLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView1" />
+            <TextView
+                extra:MvxBind="Text OpenLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView2" />
+            <TextView
+                extra:MvxBind="Text PhoneLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView3" />
+            <TextView
+                extra:MvxBind="Text SmsLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView4" />
+            <TextView
+                extra:MvxBind="Text MobilePhoneLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView5" />
+            <TextView
+                extra:MvxBind="Text FaxLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView6" />
+            <TextView
+                extra:MvxBind="Text SkypeLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView7" />
+            <TextView
+                extra:MvxBind="Text EmailLabel; BackgroundColor NativeColor(MenuBarColor)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding"
+                android:layout_marginBottom="@dimen/defaultPadding"
+                style="@style/TextViewStyle_contact"
+                android:id="@+id/textView8" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        extra:MvxBind="BackgroundColor NativeColor(TopBarColor)"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewStyle_title_white_22"
+            extra:MvxLang="Text Order, Source=SharedTextSource"
+            android:id="@+id/textView1" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/defaultPadding_2x">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextViewStyle_standard_black_18"
+                android:textColor="@android:color/black"
+                android:paddingTop="0dp"
+                extra:MvxBind="Text NameLabel" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle_standard"
+                android:inputType="textNoSuggestions"
+                extra:MvxBind="Text NameText; Hint NameLabel" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                style="@style/TextViewStyle_standard_black_18"
+                extra:MvxBind="Text EmailLabel" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle_standard"
+                android:inputType="textNoSuggestions"
+                android:paddingBottom="@dimen/defaultPadding_2x"
+                extra:MvxBind="Text EmailText; Hint EmailLabel" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                style="@style/TextViewStyle_standard_black_18"
+                extra:MvxBind="Text PhoneNumberLabel" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle_standard"
+                android:inputType="textNoSuggestions"
+                android:paddingBottom="@dimen/defaultPadding_2x"
+                extra:MvxBind="Text PhoneNumberText; Hint PhoneNumberLabel" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding_2x"
+                extra:MvxBind="BackgroundColor NativeColor(PickerColor)">
+                <Button
+                    android:text="GPS - text,szín,command bind kell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonStyle_standard"
+                    android:paddingTop="@dimen/defaultPadding_2x"
+                    android:paddingBottom="@dimen/defaultPadding_2x"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/button_gps" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViewStyle_standard_black_18"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                extra:MvxBind="Text CitysLabel" />
+            <MvxSpinner
+                android:id="@+id/addTrans_mainCategoryList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:layout_gravity="center_vertical"
+                extra:MvxBind="ItemsSource CityItemList; SelectedItem SelectedCityItem; BackgroundColor NativeColor(PickerColor)"
+                extra:MvxItemTemplate="@layout/city_itemtemplate"
+                extra:MvxDropDownItemTemplate="@layout/city_dropdownitemtemplate" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextViewStyle_standard_black_18"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/black"
+                extra:MvxBind="Text SpeedLabel" />
+            <MvxSpinner
+                android:id="@+id/addTrans_mainCategoryList"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                extra:MvxBind="ItemsSource SpeedItemList; SelectedItem SelectedSpeedItem; BackgroundColor NativeColor(PickerColor)"
+                extra:MvxItemTemplate="@layout/city_itemtemplate"
+                extra:MvxDropDownItemTemplate="@layout/city_dropdownitemtemplate" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultPadding_2x"
+                extra:MvxBind="BackgroundColor NativeColor(MenuBarColor)">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    extra:MvxBind="Text SendButtonLabel; Click SendCommand"
+                    style="@style/ButtonStyle_standard"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/button_send" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

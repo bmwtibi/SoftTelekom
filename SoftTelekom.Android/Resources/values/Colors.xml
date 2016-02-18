@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <color name="menuselectedcolor">#b0a075</color>
+  <color name="titlecolor">#dadada</color>
+  <color name="menucolor">#dadada</color>
+  <color name="test">#38AB68</color>
+  <color name="darkblue">#202a49</color>
+  <color name="lightblue">#4961ad</color>
+  <color name="gold">#b0a075</color>
+  <color name="darkgray">#585858</color>
+  <color name="lightgray">#929292</color>
+  <color name="transparent">#00000000</color>
+  <color name="bgcolor">#ffffff</color>
+</resources>

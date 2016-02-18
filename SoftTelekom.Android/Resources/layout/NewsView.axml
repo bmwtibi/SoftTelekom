@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginBottom="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        extra:MvxBind="BackgroundColor NativeColor(TopBarColor)"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            style="@style/TextViewStyle_title_white_22"
+            extra:MvxLang="Text News, Source=SharedTextSource"
+            android:id="@+id/textView1" />
+    </LinearLayout>
+    <MvxListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        extra:MvxBind="ItemsSource NewsList"
+        extra:MvxItemTemplate="@layout/news_listelement" />
+</LinearLayout>
