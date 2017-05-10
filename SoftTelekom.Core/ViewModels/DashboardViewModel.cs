@@ -13,13 +13,62 @@ namespace SoftTelekom.Core.ViewModels
     public class DashboardViewModel : MainViewModel
     {
         private MvxSubscriptionToken _tokenLang;
+		private MvxSubscriptionToken _tokenMenu;
         public DashboardViewModel(IViewModelParams param) : base(param)
         {
             param.Builder.LoadResources(Settings.SavedLanguages == LanguagesEnum.HU ? "Hungarian" : "English");
             _tokenLang = Mvx.Resolve<IMvxMessenger>().Subscribe<LanguageChangeMessage>(message =>
                 param.Builder.LoadResources(Settings.SavedLanguages == LanguagesEnum.HU ? "Hungarian" : "English"));
-            
+           
+			_tokenMenu = Mvx.Resolve<IMvxMessenger>().Subscribe<MenuItemSelectedMessage>(message =>
+			{
+				switch (message.MenuIndex)
+				{
+					case 0:
+						{
+							if (News != null) News.LoadData();
+							break;
+						}
+					case 4:
+						{
+							if (!string.IsNullOrEmpty(Settings.SavedUserEmail))
+							{
+								if (User != null) User.LoadData();
+							}
+
+							break;
+						}
+					case 5:
+						{
+							if (string.IsNullOrEmpty(Settings.SavedUserEmail))
+							{
+								if (News != null) News.LoadData();
+							}
+							else
+							{
+								//_menu.TopView = new BillingInfoView() { ViewModel = Model.Bill };
+							}
+							break;
+						}
+					case 6:
+						{
+							if (string.IsNullOrEmpty(Settings.SavedUserEmail))
+							{
+								if (News != null) News.LoadData();
+							}
+							else
+							{
+								if (Usage != null) Usage.LoadData();
+							}
+							break;
+						}
+					default:
+						break;
+				}
+			});
             Initialize();  
+
+
         }
         #region [ Private methods ]
         private void Initialize()
@@ -36,6 +85,8 @@ namespace SoftTelekom.Core.ViewModels
             Usage = vmFinder.GetViewModel<InternetUsageViewModel>();
             Webmail = vmFinder.GetViewModel<WebmailViewModel>();
             Report = vmFinder.GetViewModel<ReportViewModel>();
+
+
 
         }
 

@@ -35,7 +35,7 @@ namespace SoftTelekom.Core.ViewModels
         #region [ Private methods ]
         private void InitializeMenu()
         {
-            if (string.IsNullOrEmpty(Settings.SavedUser))
+            if (string.IsNullOrEmpty(Settings.SavedUserEmail))
             {
                 MenuItems = new List<MenuItem>()
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Binding.BindingContext;
@@ -114,7 +115,7 @@ namespace SoftTelekom.iOS.Views
                     }  
                 case 4:
                     {
-                        if (string.IsNullOrEmpty(Settings.SavedUser))
+                        if (string.IsNullOrEmpty(Settings.SavedUserEmail))
                         {
                             _menu.TopView = new SettingsView() { ViewModel = Model.SettingsVm };
                         }
@@ -127,7 +128,7 @@ namespace SoftTelekom.iOS.Views
                     }
                 case 5:
                     {
-                        if (string.IsNullOrEmpty(Settings.SavedUser))
+                        if (string.IsNullOrEmpty(Settings.SavedUserEmail))
                         {
                             _menu.TopView = new NewsView() { ViewModel = Model.News };
                         }
@@ -139,7 +140,7 @@ namespace SoftTelekom.iOS.Views
                     }
                 case 6:
                     {
-                        if (string.IsNullOrEmpty(Settings.SavedUser))
+                        if (string.IsNullOrEmpty(Settings.SavedUserEmail))
                         {
                             _menu.TopView = new NewsView() { ViewModel = Model.News };
                         }
@@ -151,19 +152,44 @@ namespace SoftTelekom.iOS.Views
                     }
                 case 7:
                     {
-                        if (string.IsNullOrEmpty(Settings.SavedUser))
+                        if (string.IsNullOrEmpty(Settings.SavedUserEmail))
                         {
                             _menu.TopView = new NewsView() { ViewModel = Model.News };
                         }
                         else
                         {
-                            _menu.TopView = new WebmailView() { ViewModel = Model.Webmail };
+							//_menu.TopView = new WebmailView() { ViewModel = Model.Webmail };
+							var alertView = new UIAlertView();
+
+								alertView.Title = "Információ";
+
+								alertView.Message = "Ön a webmail szolgáltatás megtekintésést választotta szeretné hogy átirányitsuk a böngészőbe?";
+
+							List<int> buttonIndexes = new List<int>();
+
+								buttonIndexes.Add((int)alertView.AddButton("Nem"));
+
+
+								buttonIndexes.Add((int)alertView.AddButton("Igen"));
+
+							alertView.Clicked += (sender, args) =>
+							{
+								if (buttonIndexes[(int)args.ButtonIndex] == buttonIndexes.Count - 1)
+								{
+									UIApplication.SharedApplication.OpenUrl(new NSUrl("https://mail.soft-telekom.hu/webmail/src/login.php"));
+								}
+								alertView = null;
+							};
+
+							alertView.Show();
+
+
                         }
                         break;
                     }
                 case 8:
                     {
-                        if (string.IsNullOrEmpty(Settings.SavedUser))
+                        if (string.IsNullOrEmpty(Settings.SavedUserEmail))
                         {
                             _menu.TopView = new NewsView() { ViewModel = Model.News };
                         }
@@ -175,14 +201,14 @@ namespace SoftTelekom.iOS.Views
                     }
                 case 9:
                     {
-                        if (string.IsNullOrEmpty(Settings.SavedUser))
-                        {
-                            _menu.TopView = new NewsView() { ViewModel = Model.News };
-                        }
-                        else
-                        {
+                        //if (string.IsNullOrEmpty(Settings.SavedUser))
+                        //{
+                        //    _menu.TopView = new NewsView() { ViewModel = Model.News };
+                        //}
+                        //else
+                        //{
                             _menu.TopView = new SettingsView() { ViewModel = Model.SettingsVm }; ;
-                        }
+                        //}
                         break;
                     }  
                 default:

@@ -24,26 +24,26 @@ namespace SoftTelekom.Core.ViewModels
                 param.Builder.LoadResources(Settings.SavedLanguages == LanguagesEnum.HU ? "Hungarian" : "English");
                 InitText();
             });
-            InputIsEnabled = string.IsNullOrEmpty(Settings.SavedUser);
+            InputIsEnabled = string.IsNullOrEmpty(Settings.SavedUserEmail);
         }
 
         #region [ Private methods ]
         private void InitText()
         {
             TopBarTitle = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("Administration");
-            OnlineDescription = string.IsNullOrEmpty(Settings.SavedUser)
+            OnlineDescription = string.IsNullOrEmpty(Settings.SavedUserEmail)
                 ? SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogInDescription")
                 : SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogOutDescription");
-            LogInOutButtonTitle = string.IsNullOrEmpty(Settings.SavedUser)
+            LogInOutButtonTitle = string.IsNullOrEmpty(Settings.SavedUserEmail)
                 ? SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogIn")
                 : SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogOut");
-            if (!string.IsNullOrEmpty(Settings.SavedUser))
+			if (!string.IsNullOrEmpty(Settings.SavedUserEmail))
             {
-                UserName = Settings.SavedUser; 
+                UserName = Settings.SavedUserEmail; 
             }
 #if DEBUG
-            UserName = "teszt@teszt.hu";
-            UserPwd = "teszt";
+            UserName = "goretibor@yahoo.com";
+            UserPwd = "asdqwe";
 #endif
         }
         #endregion
@@ -98,7 +98,7 @@ namespace SoftTelekom.Core.ViewModels
         }
         private void LogInExecute()
         {
-            if (string.IsNullOrEmpty(Settings.SavedUser))
+            if (string.IsNullOrEmpty(Settings.SavedUserEmail))
             {
                 if (string.IsNullOrEmpty(UserName))
                 {
@@ -108,13 +108,30 @@ namespace SoftTelekom.Core.ViewModels
                 {
                     _dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("Error"), SharedTextSourceSingleton.Instance.SharedTextSource.GetText("ErrorEmptyUserPwd"));
                 }
-                else if (DataService.LogIn(UserName, UserPwd))
+                else
                 {
-                    MessengerService.Publish(new LogInOutMessage(this));
-                    InputIsEnabled = false;
-                    _dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("SuccessEntry"), SharedTextSourceSingleton.Instance.SharedTextSource.GetText("SuccessEntryDesc"));
-                    OnlineDescription = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogOutDescription");
-                    LogInOutButtonTitle = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogOut");
+					DataServiceSingletone.Instance.Service.Login(new LoginModel() { Email = UserName, Password = UserPwd }, 
+					                                             (string token, string message, bool isError) => 
+					{
+						if (string.IsNullOrEmpty(token) || isError)
+						{
+							_dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("Error"), message);
+						}
+						else 
+						{
+							InvokeOnMainThread(() =>
+							{
+								MessengerService.Publish(new LogInOutMessage(this));
+								InputIsEnabled = false;
+								_dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("SuccessEntry"), SharedTextSourceSingleton.Instance.SharedTextSource.GetText("SuccessEntryDesc"));
+								OnlineDescription = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogOutDescription");
+								LogInOutButtonTitle = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogOut");
+							});
+						}
+
+
+					});
+                   
                     
                 } 
             }
@@ -123,7 +140,8 @@ namespace SoftTelekom.Core.ViewModels
                 InputIsEnabled = true;
                 UserName = string.Empty;
                 UserPwd = string.Empty;
-                Settings.SavedUser = string.Empty;
+                Settings.SavedUserEmail = string.Empty;
+				Settings.SavedUserToken = string.Empty;
                 MessengerService.Publish(new LogInOutMessage(this));
                 OnlineDescription =  SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogInDescription");
                 LogInOutButtonTitle = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("LogIn");

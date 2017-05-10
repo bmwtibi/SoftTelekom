@@ -25,6 +25,16 @@ namespace SoftTelekom.Core.ViewModels
         }
         private void SendExecute()
         {
+			if (NetworkService.CheckInternet() == NetworkEnum.None)
+			{
+				DialogService.ShowDialogBox("Információ!", "Küldés sikertelen! Nincs internetkapcsolat!");
+			}
+			else {
+				DialogService.ShowDialogBox("Információ!", "Köszönjük visszajelzését!");
+				SelectedReason = ReportReasonEnum.InternetBug;
+				DescText = string.Empty;
+
+			}
 
         }
 

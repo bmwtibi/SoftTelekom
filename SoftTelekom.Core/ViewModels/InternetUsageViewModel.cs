@@ -13,28 +13,45 @@ namespace SoftTelekom.Core.ViewModels
             : base(param)
         {
             TopBarTitle = SharedTextSourceSingleton.Instance.SharedTextSource.GetText("InternetUsage");
-            DataService.GetCurrentDataUsage((data,ok) =>
-            {
-                if (ok)
-                {
-                    CurrentDataText = data;
-                }
-            });
-            DataService.GetListDataUsage((data, ok) =>
-            {
-                if (ok)
-                {
-                    InternetUsageItemList = new ObservableCollection<InternetUsageItem>(data);
-                }
-            });
+            
         }
 
-        private string _currentDataText;
-        public string CurrentDataText
+		public void LoadData()
+		{
+			DataServiceSingletone.Instance.Service.GetDataUsage((DataUsageResponseModel myDataUsage, string errorMessage, bool isError) =>
+			{
+				if (isError || myDataUsage == null)
+				{
+					DialogService.ShowDialogBox("Figyelem!", "Sikertelen adatlekérés");
+				}
+				else
+				{
+					InvokeOnMainThread(() =>
+					{
+						CurrentDataTodayText = myDataUsage.TodayData;
+
+						CurrentDataText = myDataUsage.CurrentMonthData;
+
+						InternetUsageItemList = new ObservableCollection<InternetUsageItem>(myDataUsage.OldData);
+					});
+				}
+
+			});
+		}
+
+        private int _currentDataText;
+        public int CurrentDataText
         {
             get { return _currentDataText; }
             set { _currentDataText = value; RaisePropertyChanged(() => CurrentDataText); }
         }
+
+		private int _currentDataTodayText;
+		public int CurrentDataTodayText
+		{
+			get { return _currentDataTodayText; }
+			set { _currentDataTodayText = value; RaisePropertyChanged(() => CurrentDataTodayText); }
+		}
 
         private ObservableCollection<InternetUsageItem> _internetUsageItemList;
         public ObservableCollection<InternetUsageItem> InternetUsageItemList

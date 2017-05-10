@@ -75,7 +75,7 @@ namespace SoftTelekom.iOS.Views.Cells
                 var set = this.CreateBindingSet<InternetUsageViewCell, InternetUsageItem>();
                 set.Bind(ContentView).For(v => v.BackgroundColor).To(vm => vm.ListBackgroundColor).WithConversion("NativeColor");
                 set.Bind(DateLabel).To(vm => vm.Date).WithConversion(new DateTimeValueConverter(), "Date2");
-                set.Bind(IsPaidLabel).To(vm => vm.DataUsage);
+                set.Bind(IsPaidLabel).To(vm => vm.DataUsage).WithConversion(new DataUsageToStringValueConverter());
                 set.Apply();
             });
         }

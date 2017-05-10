@@ -45,10 +45,11 @@ namespace SoftTelekom.iOS.Views
             View = new UILayoutHostScrollable(Layout);
             Model.PropertyChanged += (sender, args) =>
             {
-                if (args.PropertyName == "NewList")
+                if (args.PropertyName == "NewsList")
                 {
                     View.SetNeedsDisplay();
                     View.SetNeedsLayout();
+					//_tableView.GetLayoutHost().SetNeedsLayout();
                 }
             };
 

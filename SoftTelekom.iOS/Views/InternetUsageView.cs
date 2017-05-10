@@ -27,9 +27,9 @@ namespace SoftTelekom.iOS.Views
             NavigationController.NavigationBar.Opaque = false;
             NavigationController.NavigationBar.TintColor = UIColor.White;
             var actualDayInfoLabel = new LabelControl("Mai napi adatforgalma");
-            var actualDayLabel = new LabelControl("100 MB") { TextAlignment = UITextAlignment.Center, LabelFont = UIFont.SystemFontOfSize(26) };
+            var actualDayLabel = new LabelControl("0 MB") { TextAlignment = UITextAlignment.Center, LabelFont = UIFont.SystemFontOfSize(26) };
             var actualInfoLabel = new LabelControl("Aktuális havi adatforgalma");
-            var actualLabel = new LabelControl("121.0 GB"){TextAlignment = UITextAlignment.Center, LabelFont = UIFont.SystemFontOfSize(26)};
+            var actualLabel = new LabelControl("0 MB"){TextAlignment = UITextAlignment.Center, LabelFont = UIFont.SystemFontOfSize(26)};
             var oldInfoLabel = new LabelControl("Régebbi havi adatforgalmak");
             #endregion
 
@@ -94,8 +94,19 @@ namespace SoftTelekom.iOS.Views
             set.Bind(source).To(vm => vm.InternetUsageItemList);
             set.Bind(this).For(v => v.Title).To(vm => vm.TopBarTitle);
             set.Bind(NavigationController.NavigationBar).For(t => t.BarTintColor).To(vm => vm.TopBarColor).WithConversion("NativeColor");
-
+			set.Bind(actualDayLabel.Label).To(vm => vm.CurrentDataTodayText).WithConversion(new DataUsageToStringValueConverter());
+			set.Bind(actualLabel.Label).To(vm => vm.CurrentDataText).WithConversion(new DataUsageToStringValueConverter());;
             set.Apply();
+
+			Model.PropertyChanged += (sender, args) =>
+			{
+				if (args.PropertyName == "InternetUsageItemList")
+				{
+					View.SetNeedsDisplay();
+					View.SetNeedsLayout();
+					_tableView.GetLayoutHost().SetNeedsLayout();
+				}
+			};
 
             #endregion
         }

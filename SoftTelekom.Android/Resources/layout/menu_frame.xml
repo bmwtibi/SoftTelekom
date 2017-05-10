@@ -1,19 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:extra="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/menu_frame"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-		android:background="@drawable/MenuBg">
-  <RelativeLayout
-	    android:layout_height="50dp"
-		android:layout_width="fill_parent"
-		android:layout_marginTop="@dimen/defaultPadding_2x"
-	    android:background="@android:color/transparent">
-  </RelativeLayout>
-
-  <MvxListView
+    xmlns:extra="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_frame"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    extra:MvxBind="background MenuBgImage(CurrenTheme)">
+    <RelativeLayout
+        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="@dimen/defaultPadding_2x"
+        android:background="@android:color/transparent" />
+    <MvxListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginLeft="@dimen/defaultPadding_2x"

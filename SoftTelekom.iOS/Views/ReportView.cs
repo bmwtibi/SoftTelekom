@@ -26,7 +26,7 @@ namespace SoftTelekom.iOS.Views
 
             var problemLabel = new LabelControl("Jelenteni kívánt probléma");
             var problemPicker = new PickerControl(true);
-            var sendButton = new ButtonControl(Helper.GetLangText("SendOrder"), Model.SendCommand) { LabelFontColor = UIColor.White, Margin = new UIEdgeInsets(20, 10, 0, 10) };
+            var sendButton = new ButtonControl(Helper.GetLangText("Send"), Model.SendCommand) { LabelFontColor = UIColor.White, Margin = new UIEdgeInsets(20, 10, 0, 10) };
             
             #endregion
 

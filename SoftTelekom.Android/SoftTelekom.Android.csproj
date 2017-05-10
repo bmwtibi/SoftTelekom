@@ -15,8 +15,7 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>
-    </AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
@@ -166,6 +165,8 @@
     <Compile Include="Views\SettingsView.cs" />
     <Compile Include="Views\UserInfoView.cs" />
     <Compile Include="Views\WebmailView.cs" />
+    <Compile Include="Converters\MenuBgImageValueConverter.cs" />
+    <Compile Include="Converters\DataUsageToStringValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="..\SoftTelekom.iOS\SoftTelekomResources\Text\English\Shared.json">
@@ -243,6 +244,7 @@
     <AndroidResource Include="Resources\layout\enum_dropdownitemtemplate.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\MenuBlueBg.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

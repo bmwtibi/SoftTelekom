@@ -78,32 +78,32 @@ namespace SoftTelekom.iOS.Views
                     new NativeView(nameControl.GetView(),new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)),                  
                     new NativeView(emailControl.GetView(),new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)),                
                     new NativeView(phoneControl.GetView(),new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)),     
-                     new LinearLayout(Orientation.Vertical) 
-                    {
-                        LayoutParameters = new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)
-                        {
-                            //Gravity = Gravity.Center,
-                            Margins = new UIEdgeInsets(20,10,10,10)
-                        },
-                        Layer = new CALayer()
-                        {
-                            BackgroundColor = UIColor.FromRGB(167, 74, 133).CGColor
-                        },
-                        SubViews = new View[]
-                        {
-                            new NativeView()
-                            { 
-                                LayoutParameters = new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)
-                                {
-                                    Margins = new UIEdgeInsets(3,10,3,10)
-                                },
-                                View = _getLocationButton = new UIButton()
-                                {
+                    // new LinearLayout(Orientation.Vertical) 
+                    //{
+                    //    LayoutParameters = new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)
+                    //    {
+                    //        //Gravity = Gravity.Center,
+                    //        Margins = new UIEdgeInsets(20,10,10,10)
+                    //    },
+                    //    Layer = new CALayer()
+                    //    {
+                    //        BackgroundColor = UIColor.FromRGB(167, 74, 133).CGColor
+                    //    },
+                    //    SubViews = new View[]
+                    //    {
+                    //        new NativeView()
+                    //        { 
+                    //            LayoutParameters = new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)
+                    //            {
+                    //                Margins = new UIEdgeInsets(3,10,3,10)
+                    //            },
+                    //            View = _getLocationButton = new UIButton()
+                    //            {
                                     
-                                }
-                            }
-                        }         
-                    },
+                    //            }
+                    //        }
+                    //    }         
+                    //},
                      new NativeView()
                     {
                         LayoutParameters = new LayoutParameters(AutoSize.FillParent,AutoSize.WrapContent)
@@ -141,50 +141,50 @@ namespace SoftTelekom.iOS.Views
 
             #endregion
            
-            _getLocationButton.TitleLabel.Font = UIFont.SystemFontOfSize(12);
-            _getLocationButton.SetTitle("GPS-es szolgáltatás meghatározás",UIControlState.Normal);
-            var loactionManager = new CLLocationManager();
-            _getLocationButton.TouchUpInside += (sender, args) =>
-            {
+            //_getLocationButton.TitleLabel.Font = UIFont.SystemFontOfSize(12);
+            //_getLocationButton.SetTitle("GPS-es szolgáltatás meghatározás",UIControlState.Normal);
+            //var loactionManager = new CLLocationManager();
+            //_getLocationButton.TouchUpInside += (sender, args) =>
+            //{
                 
-                loactionManager.DistanceFilter = 1;
-                loactionManager.DesiredAccuracy = CLLocation.AccuracyBest;
-                loactionManager.Failed += (o, eventArgs) =>
-                {
-                    Mvx.Resolve<IDialogService>().ShowDialogBox("Error", eventArgs.Error.LocalizedDescription); 
-                };
-                loactionManager.UpdatedLocation += (o, eventArgs) =>
-                {
-                    if (eventArgs.NewLocation != null)
-                    {
-                        if (DataService.GetLocationServices(eventArgs.NewLocation.Coordinate.Longitude, eventArgs.NewLocation.Coordinate.Latitude))
-                        {
-                            Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető","Az ön jelenlegi pozitcióján minden szolgáltatás elérhető" );
-                            Model.SelectedCityItem = Model.CityItemList[2];
-                        }
-                        else
-                        {
-                            Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető", "Az ön jelenlegi pozitcióján nem érhető el szolgáltatás");
-                        }
-                        loactionManager.StopUpdatingLocation();
+            //    loactionManager.DistanceFilter = 1;
+            //    loactionManager.DesiredAccuracy = CLLocation.AccuracyBest;
+            //    loactionManager.Failed += (o, eventArgs) =>
+            //    {
+            //        Mvx.Resolve<IDialogService>().ShowDialogBox("Error", eventArgs.Error.LocalizedDescription); 
+            //    };
+            //    loactionManager.UpdatedLocation += (o, eventArgs) =>
+            //    {
+            //        if (eventArgs.NewLocation != null)
+            //        {
+            //            if (DataService.GetLocationServices(eventArgs.NewLocation.Coordinate.Longitude, eventArgs.NewLocation.Coordinate.Latitude))
+            //            {
+            //                Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető","Az ön jelenlegi pozitcióján minden szolgáltatás elérhető" );
+            //                Model.SelectedCityItem = Model.CityItemList[2];
+            //            }
+            //            else
+            //            {
+            //                Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető", "Az ön jelenlegi pozitcióján nem érhető el szolgáltatás");
+            //            }
+            //            loactionManager.StopUpdatingLocation();
                         
-                    }
-                };
-                // loactionManager.loactionManager.Location.Coordinate.Latitude
-                loactionManager.RequestWhenInUseAuthorization();
-                loactionManager.StartUpdatingLocation();
-                if (DataService.GetLocationServices(loactionManager.Location.Coordinate.Longitude, loactionManager.Location.Coordinate.Latitude))
-                {
-                    Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető", "Az ön jelenlegi pozitcióján minden szolgáltatás elérhető");
-                    Model.SelectedCityItem = Model.CityItemList[2];
-                }
-                else
-                {
-                    Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető", "Az ön jelenlegi pozitcióján nem érhető el szolgáltatás");
-                }
-                loactionManager.StopUpdatingLocation();
+            //        }
+            //    };
+            //    // loactionManager.loactionManager.Location.Coordinate.Latitude
+            //    loactionManager.RequestWhenInUseAuthorization();
+            //    loactionManager.StartUpdatingLocation();
+            //    if (DataService.GetLocationServices(loactionManager.Location.Coordinate.Longitude, loactionManager.Location.Coordinate.Latitude))
+            //    {
+            //        Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető", "Az ön jelenlegi pozitcióján minden szolgáltatás elérhető");
+            //        Model.SelectedCityItem = Model.CityItemList[2];
+            //    }
+            //    else
+            //    {
+            //        Mvx.Resolve<IDialogService>().ShowDialogBox("Elérhető", "Az ön jelenlegi pozitcióján nem érhető el szolgáltatás");
+            //    }
+            //    loactionManager.StopUpdatingLocation();
 
-            };
+            //};
             View.AddGestureRecognizer(new UITapGestureRecognizer(tap =>
             {
 
@@ -199,6 +199,10 @@ namespace SoftTelekom.iOS.Views
             var set = this.CreateBindingSet<OrderView, OrderViewModel>();
             set.Bind(this).For(v => v.Title).To(vm => vm.TopBarTitle);
             set.Bind(NavigationController.NavigationBar).For(t => t.BarTintColor).To(vm => vm.TopBarColor).WithConversion("NativeColor");
+
+			set.Bind(nameControl.InputTextField).To(vm => vm.NameText);
+			set.Bind(emailControl.InputTextField).To(vm => vm.EmailText);
+			set.Bind(phoneControl.InputTextField).To(vm => vm.PhoneNumberText);
 
             set.Bind(cityPickerControl.ButtonControl).For(v => v.DefaultBackgroundColor).To(vm => vm.PickerColor).WithConversion("NativeColor");
             set.Bind(cityPickerControl.ButtonControl.Label).To(vm => vm.SelectedCityItem.Name);

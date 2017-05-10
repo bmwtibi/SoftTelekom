@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         style="@style/TextViewStyle_title_black_24"
-        extra:MvxBind="Text CurrentDataText"
+        extra:MvxBind="Text DataUsageToString(CurrentDataTodayText)"
         android:id="@+id/textView1" />
     <TextView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         style="@style/TextViewStyle_title_black_24"
-        extra:MvxBind="Text CurrentDataText"
+        extra:MvxBind="Text DataUsageToString(CurrentDataText)"
         android:id="@+id/textView1" />
     <TextView
         android:layout_width="match_parent"

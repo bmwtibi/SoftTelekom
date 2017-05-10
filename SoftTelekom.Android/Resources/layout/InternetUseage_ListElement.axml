@@ -20,6 +20,6 @@
         android:layout_weight="1"
         style="@style/TextViewStyle_standard_black_18"
         android:gravity="right"
-        extra:MvxBind="Text DataUsage"
+        extra:MvxBind="Text DataUsageToString(DataUsage)"
         android:id="@+id/textView_paid" />
 </LinearLayout>

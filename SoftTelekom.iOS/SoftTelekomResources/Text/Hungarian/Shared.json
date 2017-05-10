@@ -56,7 +56,7 @@
 
     "InternetBug": "Internetes probléma",
     "ServiceBug": "Szolgáltatással kapcsolatos probléma",
-    "Other": "Egyébb",
+    "Other": "Egyéb",
 
     "NameLabel": "Név",
     "AddressLabel": "Cím",
@@ -72,6 +72,7 @@
 
     "ReportSpinnerTitle": "Jelenteni kívánt probléma",
 
-
+	"Send": "Küldés",
+    
     "NewsUrl" : "http://127.0.0.1/jsonhu.html"
 }

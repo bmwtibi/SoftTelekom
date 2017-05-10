@@ -315,14 +315,37 @@ namespace SoftTelekom.Core.ViewModels
             }
             else
             {
-                _dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("Ordered"), SharedTextSourceSingleton.Instance.SharedTextSource.GetText("MessageSuccessOrder"));
+				var orderModel = new OrderModel()
+				{
+					Name = NameText,
+					Email = EmailText,
+					PhoneNumber = PhoneNumberText,
+					Location = SelectedCityItem.Name,
+					Speed = SelectedSpeedItem.Mbit
+				};
+				DataServiceSingletone.Instance.Service.PostOrder(orderModel,(bool isSucces, string errorMessage, bool isError) => 
+				{
+					if (isSucces && !isError)
+					{
+						InvokeOnMainThread(() =>
+						{ 
+							_dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("Ordered"), SharedTextSourceSingleton.Instance.SharedTextSource.GetText("MessageSuccessOrder")); 
+							NameText = "";
+							EmailText = "";
+							PhoneNumberText = "";
+							SelectedCityItem = CityItemList.First();
+							SelectedSpeedItem = SpeedItemList.First();
+						});
+					}
+					else 
+					{ 
+						_dialog.ShowDialogBox(SharedTextSourceSingleton.Instance.SharedTextSource.GetText("Ordered"), "Sikertelen Rendelés");
+					}
+				});
+                
                 InvokeOnMainThread(() =>
                 {
-                    NameText = "";
-                    EmailText = "";
-                    PhoneNumberText = "";
-                    SelectedCityItem = CityItemList.First();
-                    SelectedSpeedItem = SpeedItemList.First();
+                    
                 });
                 
             }

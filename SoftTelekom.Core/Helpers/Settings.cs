@@ -23,10 +23,12 @@ namespace SoftTelekom.Core.Helpers
 
         private const string LanguagesKey = "languagesKey";
         private const string ThemeKey = "themeKey";
-        private const string SavedUserKey = "savedUserKey";
+        private const string SavedUserEmailKey = "savedUserEmailKey";
+		private const string SavedUserTokenKey = "savedUserTokenKey";
 		private static readonly string LanguagesDefault = JsonConvert.SerializeObject(LanguagesEnum.HU);
         private static readonly string ThemeDefault = JsonConvert.SerializeObject(ThemeEnum.Magenta);
-        private static readonly string SavedUserDefault = JsonConvert.SerializeObject(string.Empty);
+        private static readonly string SavedUserEmailDefault = JsonConvert.SerializeObject(string.Empty);
+		private static readonly string SavedUserTokenDefault = JsonConvert.SerializeObject(string.Empty);
 
 #endregion
 
@@ -55,18 +57,31 @@ namespace SoftTelekom.Core.Helpers
             }
         }
 
-        public static string SavedUser
+        public static string SavedUserEmail
         {
             get
             {
-                return JsonConvert.DeserializeObject<string>(AppSettings.GetValueOrDefault(SavedUserKey, SavedUserDefault));
+                return JsonConvert.DeserializeObject<string>(AppSettings.GetValueOrDefault(SavedUserEmailKey, SavedUserEmailDefault));
             }
             set
             {
                 var json = JsonConvert.SerializeObject(value);
-                AppSettings.AddOrUpdateValue(SavedUserKey, json);
+                AppSettings.AddOrUpdateValue(SavedUserEmailKey, json);
             }
         }
+
+		public static string SavedUserToken
+		{
+			get
+			{
+				return JsonConvert.DeserializeObject<string>(AppSettings.GetValueOrDefault(SavedUserTokenKey, SavedUserTokenDefault));
+			}
+			set
+			{
+				var json = JsonConvert.SerializeObject(value);
+				AppSettings.AddOrUpdateValue(SavedUserTokenKey, json);
+			}
+		}
 
     }
 

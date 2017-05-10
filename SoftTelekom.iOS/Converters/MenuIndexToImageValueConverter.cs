@@ -14,18 +14,19 @@ namespace SoftTelekom.iOS.Converters
                 var type = (string)parameter;
                 if (type == "LeftMenuImage")
                 {
-                    switch (value)
-                    {
-                        case 0:
-                            return UIImage.FromBundle("SoftTelekomResources/Images/Menu/news");
-                            break;
-                        case 1:
-                            return UIImage.FromBundle("SoftTelekomResources/Images/Menu/order");
-                            break;
-                        case 2:
-                            return UIImage.FromBundle("SoftTelekomResources/Images/Menu/contact");
-                            break;
-                    }
+					//switch (value)
+					//{
+					//    case 0:
+					//        return UIImage.FromBundle("SoftTelekomResources/Images/Menu/news");
+					//        break;
+					//    case 1:
+					//        return UIImage.FromBundle("SoftTelekomResources/Images/Menu/order");
+					//        break;
+					//    case 2:
+					//        return UIImage.FromBundle("SoftTelekomResources/Images/Menu/contact");
+					//        break;
+					//}
+					return null;
                 }
 
             }
